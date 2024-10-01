@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lord of the Rings Online Guides</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Raleway:wght@300;400;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #34495e;
+      --accent-color: #e67e22;
+      --text-color: #333;
+      --bg-color: #f5f5f5;
+      --card-bg: #ffffff;
+    }
+
+    body {
+      font-family: 'Raleway', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    body.dark-mode {
+      --bg-color: #1a1a1a;
+      --text-color: #f5f5f5;
+      --card-bg: #2c2c2c;
+    }
+
+    header {
+      background-color: var(--primary-color);
+      color: #ffffff;
+      padding: 1rem 0;
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    header h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      margin: 0;
+    }
+
+    nav {
+      background-color: var(--secondary-color);
+      padding: 0.5rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .nav-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1rem;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    nav ul li {
+      margin-right: 1rem;
+    }
+
+    nav ul li a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: var(--accent-color);
+    }
+
+    .search-container {
+      display: flex;
+      align-items: center;
+    }
+
+    #search-input {
+      padding: 0.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px 0 0 5px;
+    }
+
+    #search-button {
+      background-color: var(--accent-color);
+      color: #ffffff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    #search-button:hover {
+      background-color: #d35400;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 6rem 1rem 2rem;
+    }
+
+    .hero {
+      background-image: url('https://example.com/lotro-background.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #ffffff;
+      text-align: center;
+      padding: 4rem 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .cta-button {
+      background-color: var(--accent-color);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 5px;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background-color: #d35400;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .tab {
+      background-color: var(--secondary-color);
+      color: #ffffff;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    .tab:first-child {
+      border-radius: 5px 0 0 5px;
+    }
+
+    .tab:last-child {
+      border-radius: 0 5px 5px 0;
+    }
+
+    .tab.active {
+      background-color: var(--accent-color);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .guide-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .guide-card {
+      background-color: var(--card-bg);
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .guide-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .guide-card h3 {
+      color: var(--secondary-color);
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      margin-top: 0;
+    }
+
+    .guide-card .read-more {
+      cursor: pointer;
+      color: var(--accent-color);
+      font-weight: 600;
+    }
+
+    .guide-card .additional-info {
+      display: none;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid #ddd;
+    }
+
+    .floating-toc {
+      position: fixed;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      background-color: var(--card-bg);
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      max-width: 200px;
+    }
+
+    .floating-toc h3 {
+      margin-top: 0;
+    }
+
+    .floating-toc ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .floating-toc li {
+      margin-bottom: 0.5rem;
+    }
+
+    .floating-toc a {
+      color: var(--text-color);
+      text-decoration: none;
+    }
+
+    .floating-toc a:hover {
+      color: var(--accent-color);
+    }
+
+    .breadcrumbs {
+      margin-bottom: 1rem;
+    }
+
+    .breadcrumbs a {
+      color: var(--text-color);
+      text-decoration: none;
+    }
+
+    .breadcrumbs a:hover {
+      color: var(--accent-color);
+    }
+
+    .star-rating {
+      display: inline-block;
+      font-size: 1.5rem;
+    }
+
+    .star-rating input {
+      display: none;
+    }
+
+    .star-rating label {
+      color: #ddd;
+      cursor: pointer;
+    }
+
+    .star-rating label:before {
+      content: '\2605';
+    }
+
+    .star-rating input:checked~label {
+      color: #ffdd00;
+    }
+
+    .skeleton {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: loading 1.5s infinite;
+    }
+
+    @keyframes loading {
+      0% {
+        background-position: 200% 0;
+      }
+
+      100% {
+        background-position: -200% 0;
+      }
+    }
+
+    footer {
+      background-color: var(--primary-color);
+      color: #ffffff;
+      text-align: center;
+      padding: 1rem 0;
+      margin-top: 2rem;
+    }
+
+    #back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background-color: var(--primary-color);
+      color: #ffffff;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    #back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    #back-to-top:hover {
+      background-color: var(--secondary-color);
+    }
+
+    #dark-mode-toggle {
+      background-color: transparent;
+      border: none;
+      color: #ffffff;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .nav-content {
+        flex-direction: column;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+
+      nav ul li {
+        margin: 0.5rem 0;
+      }
+
+      .search-container {
+        width: 100%;
+      }
+
+      #search-input {
+        width: 100%;
+      }
+
+      .guide-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .floating-toc {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-content">
+      <h1>LOTRO Guides</h1>
+      <button id="dark-mode-toggle" onclick="toggleDarkMode()">🌙</button>
+    </div>
+  </header>
+
+  <nav>
+    <div class="nav-content">
+      <ul>
+        <li><a href="#class-guides">Class Guides</a></li>
+        <li><a href="#quest-guides">Quest Guides</a></li>
+        <li><a href="#crafting-guides">Crafting Guides</a></li>
+        <li><a href="#getting-started">Getting Started</a></li>
+        <li><a href="#resources">Resources</a></li>
+        <li><a href="#feedback">Feedback</a></li>
+      </ul>
+      <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search for guides">
+        <button id="search-button" onclick="searchGuides()">Search</button>
+      </div>
+    </div>
+    <div id="search-results"></div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <h2>Welcome to LOTRO Guides</h2>
+      <p>Your ultimate resource for Lord of the Rings Online adventures!</p>
+      <a href="#getting-started" class="cta-button">Get Started</a>
+    </section>
+
+    <div class="breadcrumbs">
+      <a href="#">Home</a> &gt; <span>Guides</span>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" onclick="showTab('class-guides')">Class Guides</button>
+      <button class="tab" onclick="showTab('quest-guides')">Quest Guides</button>
+      <button class="tab" onclick="showTab('crafting-guides')">Crafting Guides</button>
+    </div>
+
+    <section id="class-guides" class="tab-content active">
+      <h2>Class Guides</h2>
+      <div class="guide-cards">
+        <div class="guide-card">
+          <h3>Guardian</h3>
+          <p>Guardians are the steadfast protectors of Middle-earth, specializing in tanking.</p>
+          <p>Roles: Tank (Blue), ST DPS (Red), AoE DPS (Yellow)</p>
+          <button onclick="showAlert('Guardian Guide Coming Soon')">Read More</button>
+          <div class="read-more" onclick="toggleAdditionalInfo(this)">Read More</div>
+          <div class="additional-info">
+            <p>Guardians excel at absorbing damage and protecting their allies. They use heavy armor and shields to
+              withstand powerful attacks.</p>
+            <ul>
+              <li>Blue Line: Focuses on tanking and threat generation</li>
+              <li>Red Line: Emphasizes single-target damage</li>
+              <li>Yellow Line: Specializes in area-of-effect damage</li>
+            </ul>
+          </div>
+        </div>
+        <div class="guide-card">
+          <h3>Minstrel</h3>
+          <p>Minstrels are versatile healers and support characters with powerful musical abilities.</p>
+          <p>Roles: Healer (Blue), Ranged DPS (Red), Support (Yellow)</p>
+          <button onclick="showAlert('Minstrel Guide Coming Soon')">Read More</button>
+          <div class="read-more" onclick="toggleAdditionalInfo(this)">Read More</div>
+          <div class="additional-info">
+            <p>Minstrels use the power of music to heal allies and damage enemies. They are essential in group content
+              for their healing and buffing capabilities.</p>
+            <ul>
+              <li>Blue Line: Focuses on healing and group support</li>
+              <li>Red Line: Emphasizes ranged damage dealing</li>
+              <li>Yellow Line: Balances healing and damage</li>
+            </ul>
+          </div>
+        </div>
+        <div class="guide-card">
+          <h3>Hunter</h3>
+          <p>Hunters are skilled archers and trackers, excelling at ranged combat and mobility.</p>
+          <p>Roles: Ranged DPS (Red), AoE DPS (Blue), Utility (Yellow)</p>
+          <button onclick="showAlert('Hunter Guide Coming Soon')">Read More</button>
+          <div class="read-more" onclick="toggleAdditionalInfo(this)">Read More</div>
+          <div class="additional-info">
+            <p>Hunters are masters of the bow, capable of dealing high damage from a distance. They also possess unique
+              travel skills that make them valuable in groups.</p>
+            <ul>
+              <li>Red Line: Focuses on single-target damage</li>
+              <li>Blue Line: Emphasizes area-of-effect damage</li>
+              <li>Yellow Line: Provides utility and mobility</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="quest-guides" class="tab-content">
+      <h2>Quest Guides</h2>
+      <div class="guide-cards">
+        <div class="guide-card">
+          <h3>The Shire Quests</h3>
+          <p>Explore the peaceful lands of the Shire and embark on various quests!</p>
+          <button onclick="showAlert('Shire Quest Guide Coming Soon')">Read More</button>
+          <div class="read-more" onclick="toggleAdditionalInfo(this)">Read More</div>
+          <div class="additional-info">
+            <p>The Shire is the starting area for Hobbits and offers a variety of quests that introduce players to the
+              game mechanics.</p>
+            <ul>
+              <li>Deliver pies in Michel Delving</li>
+              <li>Help Lobelia Sackville-Baggins find her lost items</li>
+              <li>Investigate strange occurrences in the Old Forest</li>
+            </ul>
+          </div>
+        </div>
+        <div class="guide-card">
+          <h3>Bree-land Adventures</h3>
+          <p>Discover the bustling town of Bree and its surrounding wilderness.</p>
+          <button onclick="showAlert('Bree-land Quest Guide Coming Soon')">Read More</button>
+          <div class="read-more" onclick="toggleAdditionalInfo(this)">Read More</div>
+          <div class="additional-info">
+            <p>Bree-land is a central hub for adventurers, offering a mix of urban and rural quests.</p>
+            <ul>
+              <li>Uncover conspiracies in the Prancing Pony</li>
+              <li>Clear out bandits from the Chetwood</li>
+              <li>Explore the mysterious Barrow-downs</li>
+            </ul>
+          </div>
+        </div>
+        <div class="guide-card">
+          <h3>Rivendell Storyline</h3>
+          <p>Uncover the secrets of the Last Homely House and aid the elves of Rivendell.</p>
+          <button onclick="showAlert('Rivendell Quest Guide Coming Soon')">Read More</button>
+          <div class="read-more" onclick="toggleAdditionalInfo(this)">Read More</div>
+          <div class="additional-info">
+            <p>Rivendell offers high-level quests and is crucial to the epic storyline of LOTRO.</p>
+            <ul>
+              <li>Assist Elrond in preparing for the Council</li>
+              <li>Recover lost elven artifacts</li>
+              <li>Defend Rivendell from encroaching threats</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="crafting-guides" class="tab-content">
+      <h2>Crafting Guides</h2>
+      <div class="guide-cards">
+        <div class="guide-card">
+          <h3>Jewelry Crafting</h3>
+          <p>Learn how to craft exquisite jewelry to enhance your character's abilities.</p>
+          <button onclick="showAlert('Jewelry Crafting Guide Coming Soon')">Read More</button>
+          <div class="read-more" onclick="toggleAdditionalInfo(this)">Read More</div>
+          <div class="additional-info">
+            <p>Jewelry crafting allows you to create rings, necklaces, and other accessories that provide valuable stat
+              boosts.</p>
+            <ul>
+              <li>Gather precious gems and metals</li>
+              <li>Learn recipes for different jewelry types</li>
+              <li>Enhance jewelry with special components</li>
+            </ul>
+          </div>
+        </div>
+        <div class="guide-card">
+          <h3>Weaponsmithing</h3>
+          <p>Master the art of forging powerful weapons for your adventures.</p>
+          <button onclick="showAlert('Weaponsmithing Guide Coming Soon')">Read More</button>
+          <div class="read-more" onclick="toggleAdditionalInfo(this)">Read More</div>
+          <div class="additional-info">
+            <p>Weaponsmithing allows you to create a variety of weapons, from swords and axes to bows and staves.</p>
+            <ul>
+              <li>Collect ore and wood for crafting</li>
+              <li>Learn recipes for different weapon types</li>
+              <li>Improve weapons with special components</li>
+            </ul>
+          </div>
+        </div>
+        <div class="guide-card">
+          <h3>Cooking</h3>
+          <p>Discover recipes and create delicious meals to boost your stats.</p>
+          <button onclick="showAlert('Cooking Guide Coming Soon')">Read More</button>
+          <div class="read-more" onclick="toggleAdditionalInfo(this)">Read More</div>
+          <div class="additional-info">
+            <p>Cooking allows you to create food and drinks that provide temporary stat boosts and other benefits.</p>
+            <ul>
+              <li>Gather ingredients from farms and markets</li>
+              <li>Learn recipes for different cuisines</li>
+              <li>Create special feast items for group content</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="getting-started">
+      <h2>Getting Started</h2>
+      <div class="guide-card">
+        <h3>Character Creation</h3>
+        <p>Choose a race and origin that affects your character's starting zone and appearance. Each race has several
+          origins, which change the character's appearance slightly.</p>
+        <p>Choose an appearance by selecting hair style, skin tone, and other features. You can change some appearance
+          items later at a Barber.</p>
+        <p>Select a name for your character, ensuring it follows the lore and guidelines for the chosen race. The game
+          allows you to change your name later for a fee.</p>
+        <div class="progress-bar">
+          <div class="progress" id="character-creation-progress"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="resources">
+      <h2>Resources</h2>
+      <div class="guide-cards">
+        <div class="guide-card">
+          <h3>LOTRO Wiki</h3>
+          <p>A comprehensive database of quests, items, characters, locations, deeds, lore, and more.</p>
+          <a href="https://lotro-wiki.com/" target="_blank" rel="noopener noreferrer">
+            <button>Visit LOTRO Wiki</button>
+          </a>
+        </div>
+        <div class="guide-card">
+          <h3>LOTRO Build</h3>
+          <p>An online database of items, relics, and titles with Discord integration.</p>
+          <a href="https://lotrobuild.com/" target="_blank" rel="noopener noreferrer">
+            <button>Visit LOTRO Build</button>
+          </a>
+        </div>
+        <div class="guide-card">
+          <h3>Glumlug's LOTRO Companion</h3>
+          <p>A downloadable tool for character management, item database, and embedded Middle-earth maps.</p>
+          <a href="https://glumlug.com/lotro-companion/" target="_blank" rel="noopener noreferrer">
+            <button>Visit Glumlug's LOTRO Companion</button>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="feedback">
+      <h2>Feedback</h2>
+      <form onsubmit="event.preventDefault(); submitFeedback();">
+        <div class="star-rating">
+          <input type="radio" id="star5" name="rating" value="5" /><label for="star5"></label>
+          <input type="radio" id="star4" name="rating" value="4" /><label for="star4"></label>
+          <input type="radio" id="star3" name="rating" value="3" /><label for="star3"></label>
+          <input type="radio" id="star2" name="rating" value="2" /><label for="star2"></label>
+          <input type="radio" id="star1" name="rating" value="1" /><label for="star1"></label>
+        </div>
+        <br>
+        <label for="comment">Comment:</label>
+        <textarea id="comment" rows="4"
+          style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;"></textarea>
+        <br>
+        <button type="submit">Submit</button>
+      </form>
+      <div id="feedback-display"></div>
+    </section>
+  </main>
+
+  <div class="floating-toc">
+    <h3>Table of Contents</h3>
+    <ul>
+      <li><a href="#class-guides">Class Guides</a></li>
+      <li><a href="#quest-guides">Quest Guides</a></li>
+      <li><a href="#crafting-guides">Crafting Guides</a></li>
+      <li><a href="#getting-started">Getting Started</a></li>
+      <li><a href="#resources">Resources</a></li>
+      <li><a href="#feedback">Feedback</a></li>
+    </ul>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Lord of the Rings Online Guides. All rights reserved.</p>
+  </footer>
+
+  <button id="back-to-top" onclick="scrollToTop()">↑</button>
+
+  <script>
+    function showAlert(message) {
+      alert(message);
+    }
+
+    function searchGuides() {
+      const search = document.getElementById('search-input').value.toLowerCase();
+      const guideCards = document.querySelectorAll('.guide-card');
+      const searchResults = document.getElementById('search-results');
+
+      searchResults.innerHTML = '';
+      searchResults.style.display = 'none';
+
+      if (search.trim() === '') {
+        return;
+      }
+
+      let hasResults = false;
+
+      guideCards.forEach(card => {
+        const cardText = card.textContent.toLowerCase();
+        if (cardText.includes(search)) {
+          const highlightedText = card.innerHTML.replace(
+            new RegExp(`(${search})`, 'gi'),
+            '<mark>$1</mark>'
+          );
+          const clonedCard = card.cloneNode(true);
+          clonedCard.innerHTML = highlightedText;
+          searchResults.appendChild(clonedCard);
+          hasResults = true;
+        }
+      });
+
+      if (hasResults) {
+        searchResults.style.display = 'block';
+      } else {
+        searchResults.innerHTML = '<p>No results found.</p>';
+        searchResults.style.display = 'block';
+      }
+    }
+
+    function submitFeedback() {
+      const rating = document.querySelector('input[name="rating"]:checked').value;
+      const comment = document.getElementById('comment').value.trim();
+
+      if (comment === "") {
+        alert("Comment cannot be empty.");
+        return;
+      }
+
+      const toast = document.createElement('div');
+      toast.innerText = `Thank you for your feedback! Rating: ${rating}, Comment: ${comment}`;
+      toast.style.position = 'fixed';
+      toast.style.bottom = '20px';
+      toast.style.right = '20px';
+      toast.style.backgroundColor = '#2c3e50';
+      toast.style.color = '#ffffff';
+      toast.style.padding = '15px';
+      toast.style.borderRadius = '5px';
+      toast.style.zIndex = '1000';
+      document.body.appendChild(toast);
+
+      const feedbackDisplay = document.getElementById('feedback-display');
+      const feedbackEntry = document.createElement('div');
+      feedbackEntry.innerText = `Rating: ${rating}, Comment: ${comment}`;
+      feedbackDisplay.appendChild(feedbackEntry);
+
+      setTimeout(() => {
+        toast.remove();
+      }, 3000);
+    }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      const button = document.getElementById('dark-mode-toggle');
+      button.innerText = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+    }
+
+    window.onscroll = function () {
+      const backToTopButton = document.getElementById('back-to-top');
+      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        backToTopButton.classList.add('visible');
+      } else {
+        backToTopButton.classList.remove('visible');
+      }
+    };
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function updateCharacterCreationProgress() {
+      const progress = document.getElementById('character-creation-progress');
+      let width = 0;
+      const interval = setInterval(() => {
+        if (width >= 100) {
+          clearInterval(interval);
+        } else {
+          width++;
+          progress.style.width = width + '%';
+        }
+      }, 50);
+    }
+
+    function showTab(tabId) {
+      const tabs = document.querySelectorAll('.tab-content');
+      tabs.forEach(tab => tab.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+
+      const tabButtons = document.querySelectorAll('.tab');
+      tabButtons.forEach(button => button.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+
+    function toggleAdditionalInfo(element) {
+      const additionalInfo = element.nextElementSibling;
+      additionalInfo.style.display = additionalInfo.style.display === 'none' ? 'block' : 'none';
+      element.textContent = additionalInfo.style.display === 'none' ? 'Read More' : 'Read Less';
+    }
+
+    window.onload = function () {
+      updateCharacterCreationProgress();
+      document.querySelectorAll('.guide-card').forEach(card => {
+        card.classList.add('skeleton');
+        setTimeout(() => {
+          card.classList.remove('skeleton');
+        }, 1500);
+      });
+    };
+
+    document.addEventListener('click', function (event) {
+      const searchResults = document.getElementById('search-results');
+      const searchInput = document.getElementById('search-input');
+      const searchButton = document.getElementById('search-button');
+
+      if (event.target !== searchResults && event.target !== searchInput && event.target !== searchButton) {
+        searchResults.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+
+</html>
